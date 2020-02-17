@@ -1,0 +1,127 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef char LEntry;
+typedef struct LNode //the strcuture for the nodes in the list
+{
+	int entry;
+	struct LNode*next;
+}LNode;
+typedef int position;
+typedef struct list
+{
+	int count;
+	LNode *head;
+}list;
+/*the funtions declarations*/
+/*the function that creates the list */
+int CreateList(int n,list*list,int element);
+/*function that searches through the list*/
+int Search(position p,list*list,LNode**current);
+/*function that inserts elements into the list*/
+int Insert(position p,int x,list*list);
+/*the function that allocates space from the opearing
+  system and enters the element to be stored*/
+LNode *MakeLNode(int element); 
+/*function that deletes from the elements the list*/
+int Delete();
+
+
+
+/* the main function for the linked list 
+with all the required functions*/
+int main()
+{
+	int i;// for moving between the list during creation
+	list*List; // the list
+	int x; // the elements being entered
+	int n;// the number of elements
+	printf ("enter the number of elements in the list\n");
+	scanf("%d",&n);
+	printf("enter your elements\n");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&x);
+			CreateList(n,List,x);
+	}
+return 0;
+}
+/* The create function that will bulld up the list*/
+int CreateList(int n,list*list,int element)
+{
+	int i;
+	position p=0;
+	list->count=n;
+		LNode* newnode,*current;
+if (list->count<0)
+	{
+		printf("there is an attempt to enter what is no in the list");
+	}	
+		if(p==0)
+		{
+			newnode=MakeLNode(element);
+			newnode->next=list->head;
+			list->head=newnode;
+		}else
+		{
+				newnode->next=current->next;
+				current->next=newnode;
+		}
+			list->count++;
+			p++;
+		}
+		
+		
+int Search(position p,list*list,LNode**current) // function is meant to search for a location within the list
+{
+	int count; //used in the loop
+	LNode *q;//used to move through ou the list 
+	if (p<0||p>=list->count)
+	{
+		printf("there is an attempt to enter what is no in the list");
+	}
+	else
+	{
+		q=list->head;
+		for(count=0;count<p;count++)
+		{
+			q =q->next;
+		}
+		*current=q;
+	}
+}
+ 
+int Insert(position p,int x,list*list)// it wiil insert after 
+{
+	LNode * newnode,*current;
+if (p<0||p>=list->count)
+	{
+		printf("there is an attempt to enter what is no in the list");
+	}
+	else
+	{
+		newnode=MakeLNode(x);
+		if (p==0)
+		{
+			newnode->next=list->head;
+			list->head=newnode;
+		}
+		else
+		{
+			Search(p-1,list,&current);
+				newnode->next=current->next;
+				current->next=newnode;
+		}
+		list->count++;
+	}
+}
+LNode *MakeLNode(int x)
+{
+	LNode *p=malloc(sizeof(LNode));// get space from the system
+	if (p)
+	{
+		p->entry=x;
+		p->next=NULL;
+	}else
+	printf("not enough space for additional information");
+	return p;
+}
