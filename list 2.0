@@ -1,0 +1,125 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ typedef struct node 
+ {
+ 	int entry;
+ 	struct node*next;
+ }node;
+ /*the list and its size*/
+ typedef struct list
+{
+	int size;
+	node *head ;
+}list;
+
+typedef int position;
+ node *MakeListNode(int element);  //the fucntion that creates the node
+ node* search(int p,list*list); //the search function
+ 
+ int main()
+ {
+ 	list*List;//the structure that has the head and list size
+ 	List=(list*)malloc(sizeof(list));
+ 	int n; //the numberof elements
+ 	int count=0; //number of list nodes
+ 	int element; //the elements in the list
+ 	node *newnode; //the new node
+ 	node *current; //the pointer that moves through the list
+ 	int choice=1;
+ 	printf("enter the number of nodes in the list\n");
+ 	scanf("%d",&List->size);
+ 	while(count<List->size&&choice==1)
+ 	{
+	 printf("enter the element in the node\n");
+	 	
+	 	for (count=0;count<List->size;count++)
+	 	{	
+		 	scanf("%d",&element);
+	 		CreateList(count,element,List);
+		}
+		printf("this is the head is %d\n",List->head->entry);
+	for(count=0;count<List->size;count++)
+	{
+		current=search(count,List);
+		printf("%d\n",current->entry);
+	}
+		count++;
+		printf("press enter 1 to repeat the entry and 0 to stop\n");
+	 	scanf("%d",&choice);
+ }
+	count=0;
+}
+ /*the function that builds the list*/
+int CreateList(int count,int element,list*list)
+{
+	node * newnode; //the new node entering the list
+	node * current;//the node moving through the list
+if (count<0||count>=list->size)
+	{
+		printf("there is an attempt to enter what is no in the list");
+	}
+	else
+	{
+		newnode=MakeListNode(element);
+		if (count==0)
+		{
+			newnode->next=list->head->next;
+			list->head=newnode;
+			current->next=list->head->next;
+			current=list->head;
+		}
+		else
+		{
+		
+			for(count=1;count<list->size&&current->next==NULL;count++)
+			{
+			
+				newnode->next=current->next;
+				current=newnode;
+			}
+}
+}
+}
+
+ 
+ /*the fucntion that creates the node*/	
+node *MakeListNode(int element)
+{
+	node *p;
+	p=(node*)malloc(sizeof(node));// get space from the system
+	if (p)
+	{
+		p->entry=element;
+		p->next=NULL;
+	}else
+	{
+		printf("not enough space for additional information");
+	}
+	return p;
+}
+
+/*the function that displays the list*/
+int display(list*list,node * current)//not complete
+{
+	int count;// for variation of position 
+}
+
+/*the search function*/
+node * search(position p,list*list) // function is meant to search for a location within the list
+{
+	int count; //used in the loop
+	node *q;//used to move through ou the list 
+	if (p<0||p>=list->size)
+	{
+		printf("there is an attempt to enter what is no in the list");
+	}
+	else
+	{
+		q=list->head;
+		for(count=0;count<p;count++)
+		{
+			q =q->next;
+		}
+	 return q;
+	}
+}
