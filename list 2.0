@@ -1,7 +1,96 @@
  #include <stdio.h>
  #include <stdlib.h>
  typedef struct node 
+ { #include <stdio.h>
+ #include <stdlib.h>
+ 
+ 
+ typedef struct Node 
  {
+ 	int entry;
+ 	struct Node* next;
+ };
+
+typedef int position;
+Node* MakeListNode(int element);
+Node* search(int p, Node* list); 
+ 
+int main()
+{
+	bool shouldExit = false;
+	while(!shouldExit)
+	{
+		Node* head;
+		int numberOfNodes=0;
+		int count = 0;		
+		
+		int element;
+		Node *newNode; 
+		Node *currentNode;
+		
+		
+		printf("enter the number of nodes in the list\n");
+		scanf("%d",&numberOfNodes);
+
+		printf("enter the element in the node\n");
+		
+		for (count=0; count<numberOfNodes; count++)
+		{	
+			scanf("%d",&element);
+
+			if (count=0) {
+				head = (Node*)malloc(sizeof(Node));
+				head->entry = element;
+				head->next = NULL;
+				currentNode = head;
+			} else {
+				newNode = (Node*)malloc(sizeof(Node));
+				newNode->entry = element;
+				newNode->next = NULL;
+				currentNode->next = newNode;
+				currentNode = newNode;
+			}
+		}
+		
+		printf("this is the head is %d\n",head->entry);
+		
+		currentNode = head;
+
+		for (count=0; count<numberOfNodes; count++)
+		{
+//			ifcurrentNode 
+			current=search(count,List);
+//			printf("%d\n",current->entry);
+		}
+		
+		
+		int choice = 0;
+		printf("press enter 1 to repeat the entry and 0 to stop\n");
+		scanf("%d",&choice);
+		shouldExit = (choice == 0);
+	}
+}
+
+/*the search function*/
+node * search(position p,list*list) // function is meant to search for a location within the list
+{
+	int count; //used in the loop
+	node *q;//used to move through ou the list 
+	if (p<0 || p>=list->size)
+	{
+		printf("there is an attempt to enter what is no in the list");
+	}
+	else
+	{
+		q=list->head;
+		for(count=0;count<p;count++)
+		{
+			q =q->next;
+		}
+	 return q;
+	}
+}
+
  	int entry;
  	struct node*next;
  }node;
