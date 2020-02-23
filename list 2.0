@@ -1,9 +1,5 @@
  #include <stdio.h>
  #include <stdlib.h>
- typedef struct node 
- { #include <stdio.h>
- #include <stdlib.h>
- 
  
  typedef struct Node 
  {
@@ -17,8 +13,7 @@ Node* search(int p, Node* list);
  
 int main()
 {
-	bool shouldExit = false;
-	while(!shouldExit)
+	while(!true)
 	{
 		Node* head;
 		int numberOfNodes=0;
